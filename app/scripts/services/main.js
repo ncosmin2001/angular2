@@ -14,6 +14,16 @@ mainServices.factory('mainServices', function($http, $rootScope) {
                     .then(function(result){
                        return result.data;
                     });
+        },
+
+        userSession : {
+            user :null,
+            getUser:function(){
+                return this.user;
+            },
+            setUser:function(user){
+                this.user = user;
+            }
         }
     };
 });
