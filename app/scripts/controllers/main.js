@@ -12,12 +12,26 @@ var mainControllers = angular.module('mainControllers', []);
 
 mainControllers.controller('LoginCtrl' , ['$scope','$routeParams', 'mainServices',
     function($scope, $routeParams, mainServices){
+        $scope.credentials = {
+            user_name: '',
+            user_password: ''
+        };
+        
+        $scope.login = function(credentials){
+            mainServices.tryLogin(credentials).then(function(user){
+                    return user;
+            });
+        };
+    }]);
+
+mainControllers.controller('MainCtrl' , ['$scope','$routeParams', 'mainServices',
+    function($scope, $routeParams, mainServices){
         /**
          * magic
          */
     }]);
 
-mainControllers.controller('MainCtrl' , ['$scope','$routeParams', 'mainServices',
+mainControllers.controller('EditProfileCtrl' , ['$scope','$routeParams', 'mainServices',
     function($scope, $routeParams, mainServices){
         /**
          * magic

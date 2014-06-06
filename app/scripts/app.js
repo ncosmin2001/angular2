@@ -19,7 +19,7 @@ angular
     'mainServices',
     'mainControllers'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $httpProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -29,7 +29,18 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
+      .when('/edit', {
+        templateUrl: 'views/edit.html',
+        controller: 'EditProfileCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
+      
+      $httpProvider.defaults.transformRequest = function(data){
+        if (data === undefined) {
+            return data;
+        }
+        return $.param(data);
+    }
   });
