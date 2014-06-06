@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 06, 2014 at 01:40 PM
+-- Generation Time: Jun 06, 2014 at 03:14 PM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.3.13
 
@@ -27,14 +27,21 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `user_id` int(11) NOT NULL,
-  `user_first_name` varchar(30) NOT NULL,
-  `user_last_name` varchar(30) NOT NULL,
-  `user_location` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_first_name` varchar(30) DEFAULT NULL,
+  `user_last_name` varchar(30) DEFAULT NULL,
+  `user_location` int(11) DEFAULT NULL,
   `user_name` varchar(10) NOT NULL,
   `user_password` varchar(10) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_first_name`, `user_last_name`, `user_location`, `user_name`, `user_password`) VALUES
+(1, NULL, NULL, NULL, 'calin', 'calin');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
