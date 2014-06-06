@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name angularJsWorkshopApp
+ * @name workshopApp
  * @description
- * # angularJsWorkshopApp
+ * # workshopApp
  *
  * Main module of the application.
  */
 angular
-  .module('angularJsWorkshopApp', [
+  .module('workshopApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
