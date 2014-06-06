@@ -1,33 +1,34 @@
-<form class="form-horizontal" ng-controller="EditProfileCtrl">
-    <input type="hidden" name="user.id" />
+<div ng-controller="EditProfileCtrl">
+<form class="form-horizontal" ng-submit="update(user)" >
+    <input type="hidden" name="user.user_id" />
     <div class="form-group">
         <label class="control-label col-xs-3" for="firstName">First Name:</label>
         <div class="col-xs-9">
-            <input type="text" class="form-control" ng-model="user.first_name" id="firstName" placeholder="First Name">
+            <input type="text" class="form-control" ng-model="user.user_first_name" id="firstName">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-3" for="lastName">Last Name:</label>
         <div class="col-xs-9">
-            <input type="text" class="form-control" ng-model="user.last_name" id="lastName" placeholder="Last Name">
+            <input type="text" class="form-control" ng-model="user.user_last_name" id="lastName">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-3" for="inputLocation">Location:</label>
         <div class="col-xs-9">
-            <input type="email" class="form-control" ng-model="user.location" id="inputLocation" placeholder="Email">
+            <input type="email" class="form-control" ng-model="user.user_location" id="inputLocation">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-3" for="inputUsername">Username:</label>
         <div class="col-xs-9">
-            <input type="email" class="form-control" ng-model="user.username" id="inputUsername" placeholder="Email">
+            <input type="email" class="form-control" ng-model="user.user_name" id="inputUsername">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-3" for="inputPassword">Password:</label>
         <div class="col-xs-9">
-            <input type="password" class="form-control" ng-model="user.password" id="inputPassword" placeholder="Password">
+            <input type="password" class="form-control" ng-model="user.user_password" id="inputPassword">
         </div>
     </div>
     <br>
@@ -38,3 +39,4 @@
         </div>
     </div>
 </form>
+</div>
