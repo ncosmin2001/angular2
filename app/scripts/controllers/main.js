@@ -12,9 +12,16 @@ var mainControllers = angular.module('mainControllers', []);
 
 mainControllers.controller('LoginCtrl' , ['$scope','$routeParams', 'mainServices',
     function($scope, $routeParams, mainServices){
-        /**
-         * magic
-         */
+        $scope.credentials = {
+            user_name: '',
+            user_password: ''
+        };
+        
+        $scope.login = function(credentials){
+            mainServices.tryLogin(credentials).then(function(user){
+                    return user;
+            });
+        };
     }]);
 
 mainControllers.controller('MainCtrl' , ['$scope','$routeParams', 'mainServices',

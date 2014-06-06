@@ -19,7 +19,7 @@ angular
     'mainServices',
     'mainControllers'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $httpProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -32,4 +32,11 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+      
+      $httpProvider.defaults.transformRequest = function(data){
+        if (data === undefined) {
+            return data;
+        }
+        return $.param(data);
+    }
   });
