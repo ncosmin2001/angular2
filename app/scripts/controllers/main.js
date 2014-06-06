@@ -24,6 +24,13 @@ mainControllers.controller('MainCtrl' , ['$scope','$routeParams', 'mainServices'
          */
     }]);
 
+mainControllers.controller('EditProfileCtrl' , ['$scope','$routeParams', 'mainServices',
+    function($scope, $routeParams, mainServices){
+        /**
+         * magic
+         */
+    }]);
+
 /*
 angular.module('workshopApp')
   .controller('MainCtrl', function ($scope) {

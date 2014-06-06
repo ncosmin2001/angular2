@@ -1,0 +1,40 @@
+<form class="form-horizontal" ng-controller="EditProfileCtrl">
+    <input type="hidden" name="user.id" />
+    <div class="form-group">
+        <label class="control-label col-xs-3" for="firstName">First Name:</label>
+        <div class="col-xs-9">
+            <input type="text" class="form-control" ng-model="user.first_name" id="firstName" placeholder="First Name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-3" for="lastName">Last Name:</label>
+        <div class="col-xs-9">
+            <input type="text" class="form-control" ng-model="user.last_name" id="lastName" placeholder="Last Name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-3" for="inputLocation">Location:</label>
+        <div class="col-xs-9">
+            <input type="email" class="form-control" ng-model="user.location" id="inputLocation" placeholder="Email">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-3" for="inputUsername">Username:</label>
+        <div class="col-xs-9">
+            <input type="email" class="form-control" ng-model="user.username" id="inputUsername" placeholder="Email">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-3" for="inputPassword">Password:</label>
+        <div class="col-xs-9">
+            <input type="password" class="form-control" ng-model="user.password" id="inputPassword" placeholder="Password">
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <div class="col-xs-offset-3 col-xs-9">
+            <input type="submit" class="btn btn-primary" value="Submit">
+            <input type="reset" class="btn btn-default" value="Reset">
+        </div>
+    </div>
+</form>
