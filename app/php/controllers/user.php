@@ -17,6 +17,7 @@ class userController
 		if($row === FALSE)
 		{
 			$this->insert();
+			$user->id       = $this->database->lastInsertId();
 			$user->name     = $_REQUEST['user_name'];
 			$user->password = $_REQUEST['user_password'];
 		}
