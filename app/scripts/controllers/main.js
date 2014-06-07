@@ -55,15 +55,19 @@ mainControllers.controller('EditProfileCtrl' , ['$scope','$routeParams', 'mainSe
 
 mainControllers.controller('SearchCtrl' , ['$scope', '$http','mainServices',
     function($scope, $http, mainServices){
+        $scope.mySkills = [];
+        //{"id_skill":null,"user_id":"1","skill_id":"0","id_relation":"1"}
+
         mainServices.getSkills().then(function(data){
             $scope.tags = data;
         });
         $scope.addSkill = function(tag)
         {
+           var user = mainServices.userSession.getUser();
             console.log(tag);
-            mainServices.setSkillRelation(tag.skill_id, tag.skill_level).then(function(data){
-                $scope.tags = data;
-            });;
+            mainServices.setSkillRelation(user.user_id, tag.skill_id, tag.skill_level).then(function(data){
+
+            });
         }
 
     }]);
