@@ -1,6 +1,9 @@
 
     <label for="searchUser">Search:</label>
     <input id='searchUser' type="text" ng-model="searchUser">
-    <ul ng-repeat="user in users| filter:searchUser|limitTo:10">
+    <ul ng-repeat="user in users track by user.user_id| filter:searchUser|limitTo:10">
         <li >{{user.user_first_name}} {{user.user_last_name}} ({{user.user_name}})</li>
+        <ul ng-repeat="skill in user.skills">
+            <li>{{skill.skill_name}} {{skill.skill_id}}</li>
+        </ul>
     </ul>

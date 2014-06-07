@@ -9,5 +9,5 @@ class userModel
 	public $user_location;
 	public $user_name;
 	public $user_password;
-
+        public $skills;
 }
