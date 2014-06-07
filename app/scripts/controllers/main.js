@@ -35,7 +35,6 @@ mainControllers.controller('MainCtrl' , ['$scope','$routeParams', 'mainServices'
             $scope.user = user;
         }
         mainServices.getUsers().then(function(data){
-            console.log(data);
             $scope.users = data;
         });
     }]);
@@ -43,8 +42,6 @@ mainControllers.controller('MainCtrl' , ['$scope','$routeParams', 'mainServices'
 mainControllers.controller('EditProfileCtrl' , ['$scope','$routeParams', 'mainServices','$location',
     function($scope, $routeParams, mainServices, $location){
         $scope.user = mainServices.userSession.getUser();
-
-        console.log(mainServices.userSession.getUser());
         $scope.update = function(user){            
             mainServices.updateUser(user).then(function(data){
                 if(data){
