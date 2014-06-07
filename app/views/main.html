@@ -1,9 +1,0 @@
-<div ng-controller="SearchCtrl">
-
-    <input ng-model="searchText">
-        <ul ng-repeat="tag in tags|filter:searchText|limitTo:10">
-            <li >{{tag.skill_name}}</li>
-        </ul>
-
-
-</div>
