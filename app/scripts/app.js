@@ -17,8 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'mainServices',
-    'mainControllers',
-    'ngTagsInput'
+    'mainControllers'
   ])
   .config(function ($routeProvider, $httpProvider) {
     $routeProvider
