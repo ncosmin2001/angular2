@@ -1,7 +1,6 @@
-
 var mainServices = angular.module('mainServices', ['ngResource']);
 
-mainServices.factory('mainServices', function($http, $rootScope) {
+mainServices.factory('mainServices', function($http, $rootScope, $cookies) {
     return {
         getCeva: function(id) {
             return $http.get('route....')
@@ -19,7 +18,7 @@ mainServices.factory('mainServices', function($http, $rootScope) {
         userSession : {
             user :null,
             getUser:function(){
-                return this.user;
+                return $cookies.user;                
             },
             setUser:function(user){
                 this.user = user;
