@@ -28,11 +28,11 @@ mainServices.factory('mainServices', function($http, $rootScope, $cookieStore) {
                 });
         },
 
-            getMySkills: function(userId) {
-            return $http.get('./php/controllers/skills.php?action=getUserSkills&user_id='+userId)
-                .then(function(result){
-                    return result.data;
-                });
+        getMySkills: function(userId) {
+        return $http.get('./php/controllers/skills.php?action=getUserSkills&user_id='+userId)
+            .then(function(result){
+                return result.data;
+            });
         },
 
         userSession : {
