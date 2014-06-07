@@ -50,9 +50,9 @@ class userController
             $sql = "UPDATE users SET
             user_first_name = :user_first_name,
              user_last_name = :user_last_name,
-             user_location= :user_location,
-             user_name= :user_name,
-             user_password = :user_password
+             user_location  = :user_location,
+             user_name      = :user_name,
+             user_password  = :user_password
 
               WHERE user_id=:user_id";
             $q = $this->database->prepare($sql);
