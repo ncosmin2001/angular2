@@ -1,4 +1,5 @@
-        
+<div class="slide-animate" ng-include src="'./views/partial/header.html'"></div>
+<div class="container">
     <div class="input-group">
         <span class="input-group-btn">
           <label class="btn btn-default" for="searchUser">Search</label>
@@ -28,12 +29,13 @@
                 <td>{{user.user_first_name}}</td>
                 <td>{{user.user_last_name}}</td>
                 <td>
-                    <ul ng-repeat="skill in user.skills">
-                        <li>{{skill.skill_name}} {{skill.skill_id}}</li>
-                    </ul>
+                    <div ng-repeat="skill in user.skills">
+                        <span class="label label-{{skill.level}} pull-left margin_2px">{{skill.skill_name}} {{skill.level}}</span>
+                    </div>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+</div>
