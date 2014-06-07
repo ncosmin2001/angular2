@@ -46,7 +46,6 @@ mainControllers.controller('EditProfileCtrl' , ['$scope','$routeParams', 'mainSe
             mainServices.updateUser(user).then(function(data){
                 if(data){
                     mainServices.userSession.setUser(user);
-                    $location.path("/");
                 }                
             });            
         };
