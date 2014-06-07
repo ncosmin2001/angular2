@@ -46,24 +46,31 @@ class userController
     public function updateUser(){
         $req= $_REQUEST;
         unset($req['action']);
+        try{
+            $sql = "UPDATE users SET
+            user_first_name = :user_first_name,
+             user_last_name = :user_last_name,
+             user_location= :user_location,
+             user_name= :user_name,
+             user_password = :user_password
 
-        $sql = "UPDATE users SET
-        user_first_name = :user_first_name,
-         user_last_name = :user_last_name,
-         user_location= :user_location,
-         user_name= :user_name,
-         user_password = :user_password
+              WHERE user_id=:user_id";
+            $q = $this->database->prepare($sql);
 
-          WHERE user_id=:user_id";
-        $q = $this->database->prepare($sql);
+            $x = array();
 
-        $x = array();
-
-        foreach($req as $key => $val){
-            $x[':'.$key]= $val;
+            foreach($req as $key => $val){
+                $x[':'.$key]= $val;
+            }
+            $q->execute($x);
+            echo json_encode(array('status'=>'ok'));
+        }catch (PDOException $e){
+            echo json_encode(array('status'=>'ko'));
         }
-        $q->execute($x);
+
     }
+
+
 
 }
 
