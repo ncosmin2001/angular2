@@ -48,6 +48,7 @@ mainControllers.controller('MainCtrl' , ['$scope','$routeParams', 'mainServices'
         }
         mainServices.getUsers().then(function(data){
             $scope.users = data;
+            console.log($scope.users);
         });
     }]);
 
