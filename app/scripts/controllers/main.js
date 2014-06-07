@@ -12,23 +12,35 @@ var mainControllers = angular.module('mainControllers', []);
 
 mainControllers.controller('LoginCtrl' , ['$scope','$routeParams', 'mainServices','$location',
     function($scope, $routeParams, mainServices, $location){
+        $scope.user = false;
+        $scope.user_u = false;
         $scope.credentials = {
             user_name: '',
             user_password: ''
         };
 
         $scope.login = function(credentials){
+            $scope.user_u = false;
             mainServices.tryLogin(credentials).then(function(user){
-                mainServices.userSession.setUser(user);               
+                mainServices.userSession.setUser(user);
+                $scope.user_u = false;
             });
             $location.path("/");
-        };        
+        };
+
+        $scope.logout = function()
+        {
+            $scope.user_u = true;
+            mainServices.userSession.setUser(false);
+            $location.path("/login");
+        }
+
+
     }]);
 
 mainControllers.controller('MainCtrl' , ['$scope','$routeParams', 'mainServices','$location',
     function($scope, $routeParams, mainServices, $location){
         var user = mainServices.userSession.getUser();
-
         if(!user){
              $location.path("/login");
         }else{
@@ -51,11 +63,22 @@ mainControllers.controller('EditProfileCtrl' , ['$scope','$routeParams', 'mainSe
             });            
         };
     }]);
- 
 
+
+
+mainControllers.controller('MenuCtrl' , ['$scope', '$http','mainServices','$location',
+    function($scope, $http, mainServices, $location){
+        var user_u = mainServices.userSession.getUser();
+        console.log(user_u);
+        $scope.user_u   = user_u == false;
+
+
+
+    }]);
 mainControllers.controller('SearchCtrl' , ['$scope', '$http','mainServices',
     function($scope, $http, mainServices){
         var user = mainServices.userSession.getUser();
+        $scope.user = user;
         $scope.mySkills = [];
         //{"id_skill":null,"user_id":"1","skill_id":"0","id_relation":"1"}
         mainServices.getMySkills(user.user_id).then(function(data){
