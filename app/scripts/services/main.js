@@ -36,7 +36,14 @@ mainServices.factory('mainServices', function($http, $rootScope, $cookieStore) {
                 .then(function(result){
                     return result.data;
                 });
+        },
+        getUsers: function() {
+            return $http.get('./php/controllers/user.php?action=getAll')
+                .then(function(result){
+                    return result.data;
+                });
         }
+
 
 
 
