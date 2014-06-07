@@ -53,50 +53,49 @@
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row"  ng-controller="SearchCtrl">
     <div class="col-md-2">
         <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
             Edit profile
         </button>
     </div>
 <div class="col-md-6">
-    <div ng-controller="SearchCtrl">
-
         <table class="table  table-hover">
         <thead>
             <tr>
                 <th colspan="2">
                     <div class="input-group">
                         <span class="input-group-addon"> Skills: </span>
-                        <input type="text" class="form-control" ng-model="searchText">
+                        <input style="width:350px;" type="text" class="form-control" ng-model="searchText">
                     </div>
                 </th>
             </tr>
         </thead>
-        <tr ng-show="searchText" ng-repeat="tag in tags|filter:searchText|limitTo:10">
+        <tbody>
+            <tr ng-show="searchText" ng-repeat="tag in tags|filter:searchText|limitTo:10">
             <td style="font-size:18px;">{{tag.skill_name}} </td>
             <td>
                <input style="width:50px; display:inline-block;"  type="number" min="1" max="5" class="form-control margin_2px" ng-model="tag.skill_level" value="1" /><span class="glyphicon glyphicon-plus margin_2px" ng-click="addSkill(tag)"></span>
             </td>
         </tr>
-        </div>
-
-
-        <table class="table">
-            <thead>
-            <tr>
-                <th><h3>My Skills</h3></td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="skill in mySkills">
-                <td><h4><small>{{skill.skill_name}} - <span class="label label-{{skill.level}} margin_2px">{{skill.level}}</span></small></h4></td>
-            </tr>
-            </tbody>
+        </tbody>
         </table>
 
+</div>
+<div class="col-md-4">
+    <table class="table">
+        <thead>
+        <tr>
+            <th><h4>My Skills</h4></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="skill in mySkills">
+            <td><h4><small>{{skill.skill_name}} - <span class="label label-{{skill.level}} margin_2px">{{skill.level}}</span></small></h4></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
-
-    </div>
 </div>
 
