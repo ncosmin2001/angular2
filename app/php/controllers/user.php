@@ -1,6 +1,7 @@
 <?php
 require_once "../connection.php";
 require_once "../models/user.php";
+require_once "../models/skillRelation.php";
 class userController
 {
 	public function __construct($_database)
@@ -79,6 +80,7 @@ class userController
         {
             $user = new userModel();
             $user->user_id = (int)$row['user_id'];
+            $user->skills = $this->getUserSkills($row['user_id']);
             $user->user_first_name = $row['user_first_name'];
             $user->user_last_name = $row['user_last_name'];
             $user->user_location = $row['user_location'];
@@ -87,7 +89,14 @@ class userController
         }
         return json_encode($users);
     }
+    public function getUserSkills($_id = FALSE){
+        $sql = "SELECT s.level, s.user_id,s.skill_id,s.id_relation, sk.skill_name FROM skillrelation s,skills sk where s.user_id = :user_id and sk.skill_id = s.skill_id ";
+        $q = $this->database->prepare($sql);
+        $q->execute(array(':user_id'=> $_id));
 
+        $result = $q->fetchAll(PDO::FETCH_CLASS, "skillRelation");
+        return $result;
+    }
 }
 
 
