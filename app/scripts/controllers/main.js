@@ -42,6 +42,21 @@ mainControllers.controller('EditProfileCtrl' , ['$scope','$routeParams', 'mainSe
          */
     }]);
 
+mainControllers.controller('SearchCtrl' , ['$scope', '$http',
+    function($scope, $http){
+        $scope.tags = [
+            { name: 'cevreaueu', id: 1 },
+            { name: 'cevreaueu1', id: 5 },
+            { name: 'cevreaueu2', id: 4 },
+            { name: 'cevreaueu3', id: 3 },
+            { name: 'cevreaueu4', id: 2 },
+
+        ];
+        $scope.loadTags = function(query) {
+            return $http.get('/tags?query=' + query);
+        };
+    }]);
+
 /*
 angular.module('workshopApp')
   .controller('MainCtrl', function ($scope) {
