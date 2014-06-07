@@ -94,12 +94,7 @@ mainControllers.controller('SearchCtrl' , ['$scope', '$http','mainServices',
             }
             $scope.tags = data;
 
-            for( var i = 0; i < data.length ; i++)
-            {
-                $scope.removeFromScope(data[i].skill_id);
-            }
 
-            console.log($scope.tags);
         });
 
         $scope.addSkill = function(tag)
@@ -107,26 +102,13 @@ mainControllers.controller('SearchCtrl' , ['$scope', '$http','mainServices',
 
            var user = mainServices.userSession.getUser();
             mainServices.setSkillRelation(user.user_id, tag.skill_id, tag.skill_level).then(function(data){
-                $scope.removeFromScope(tag.skill_id);
+
                 mainServices.getMySkills(user.user_id).then(function(data){
                     $scope.mySkills = data;
                 });
             });
         }
 
-        $scope.removeFromScope = function (idTag){
-            var x = $scope.mySkills;
-            var y = $scope.tags;
-            for(var i in x){
-
-               if(x[i].skill_id == idTag){
-                   y.splice(i);
-                   $scope.tags = y;
-                   return;
-               }
-            }
-
-        }
 
 
     }]);
