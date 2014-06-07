@@ -38,3 +38,21 @@
         </div>
     </div>
 </form>
+
+
+<div ng-controller="SearchCtrl">
+<input type="text" placeholder="select skills"
+       ng-model="searchText"
+       typeahead="tag in tags | filter:$viewValue | limitTo:10"
+       typeahead-min-length='3'
+       typeahead-on-select='onSelectPart($item, $model, $label)'
+       typeahead-template-url="customTemplate.html" style="width:350px;">
+
+
+<script type="text/ng-template" id="customTemplate.html">
+    <a>
+        <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+        <i>({{match.model.name}})</i>
+    </a>
+</script>
+</div>
