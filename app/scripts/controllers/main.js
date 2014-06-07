@@ -55,9 +55,12 @@ mainControllers.controller('EditProfileCtrl' , ['$scope','$routeParams', 'mainSe
 
 mainControllers.controller('SearchCtrl' , ['$scope', '$http','mainServices',
     function($scope, $http, mainServices){
+        var user = mainServices.userSession.getUser();
         $scope.mySkills = [];
         //{"id_skill":null,"user_id":"1","skill_id":"0","id_relation":"1"}
-
+        mainServices.getMySkills(user.user_id).then(function(data){
+            $scope.mySkills = data;
+        });
         mainServices.getSkills().then(function(data){
             $scope.tags = data;
         });
@@ -66,7 +69,9 @@ mainControllers.controller('SearchCtrl' , ['$scope', '$http','mainServices',
            var user = mainServices.userSession.getUser();
             console.log(tag);
             mainServices.setSkillRelation(user.user_id, tag.skill_id, tag.skill_level).then(function(data){
-
+                mainServices.getMySkills(user.user_id).then(function(data){
+                    $scope.mySkills = data;
+                });
             });
         }
 

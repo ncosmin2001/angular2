@@ -50,10 +50,16 @@
         <div class="dropdown">
         <ul ng-repeat="tag in tags|filter:searchText|limitTo:10">
             <li >{{tag.skill_name}} <span class="glyphicon glyphicon-plus" ng-click="addSkill(tag)"></span>
-               <input type="text" ng-model="tag.skill_level"/>
+               <input type="text" ng-model="tag.skill_level" value="1"/>
             </li>
         </ul>
         </div>
+
+        <ul ng-repeat="skill in mySkills">
+            <li >{{skill.skill_name}} - {{skill.level}}</li>
+        </ul>
+
+
 
     </div>
 </div>
