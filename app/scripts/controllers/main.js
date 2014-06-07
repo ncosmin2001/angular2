@@ -50,6 +50,14 @@ mainControllers.controller('EditProfileCtrl' , ['$scope','$routeParams', 'mainSe
         };
     }]);
 
+mainControllers.controller('SearchCtrl' , ['$scope', '$http','mainServices',
+    function($scope, $http, mainServices){
+        mainServices.getSkills().then(function(data){
+            $scope.tags = data;
+        });
+
+    }]);
+
 /*
 angular.module('workshopApp')
   .controller('MainCtrl', function ($scope) {
