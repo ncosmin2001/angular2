@@ -1,9 +1,39 @@
+        
+    <div class="input-group">
+        <span class="input-group-btn">
+          <label class="btn btn-default" for="searchUser">Search</label>
+        </span>
+        <input class="form-control" id='searchUser' type="text" ng-model="searchUser">
+    </div>
+    <br/>
+    <br/>
+    <div class="bs-example">
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
+          <div class="panel-heading">User list</div>
 
-    <label for="searchUser">Search:</label>
-    <input id='searchUser' type="text" ng-model="searchUser">
-    <ul ng-repeat="user in users track by user.user_id| filter:searchUser|limitTo:10">
-        <li >{{user.user_first_name}} {{user.user_last_name}} ({{user.user_name}})</li>
-        <ul ng-repeat="skill in user.skills">
-            <li>{{skill.skill_name}} {{skill.skill_id}}</li>
-        </ul>
-    </ul>
+          <!-- Table -->
+          <table class="table">
+            <thead>
+              <tr>
+                <th>User name</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Skills</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="user in users | filter:searchUser|limitTo:10">
+                <td>{{user.user_name}}</td>
+                <td>{{user.user_first_name}}</td>
+                <td>{{user.user_last_name}}</td>
+                <td>
+                    <ul ng-repeat="skill in user.skills">
+                        <li>{{skill.skill_name}} {{skill.skill_id}}</li>
+                    </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
