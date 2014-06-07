@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 07, 2014 at 09:02 AM
+-- Generation Time: Jun 07, 2014 at 10:25 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -25,20 +25,34 @@ USE `angular_workshop`;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `skillrelation`
+--
+
+CREATE TABLE IF NOT EXISTS `skillrelation` (
+  `id_relation` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `skill_id` int(11) NOT NULL,
+  `level` int(11) NOT NULL,
+  PRIMARY KEY (`id_relation`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `skills`
 --
 
 CREATE TABLE IF NOT EXISTS `skills` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
+  `skill_id` int(11) NOT NULL AUTO_INCREMENT,
+  `skill_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`skill_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `skills`
 --
 
-INSERT INTO `skills` (`id`, `name`) VALUES
+INSERT INTO `skills` (`skill_id`, `skill_name`) VALUES
 (1, 'php'),
 (2, 'java');
 
@@ -56,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_name` varchar(10) NOT NULL,
   `user_password` varchar(10) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `users`
@@ -68,7 +82,9 @@ INSERT INTO `users` (`user_id`, `user_first_name`, `user_last_name`, `user_locat
 (5, NULL, NULL, NULL, 'fffsdfsdfs', 'sdfsdfsdf'),
 (6, NULL, NULL, NULL, 'fadfdgfdgf', 'dfgfdgfsdg'),
 (7, NULL, NULL, NULL, 'retetret', 'rwetwertwe'),
-(8, NULL, NULL, NULL, 'sdfsdfsdf', 'sdfsdfsd');
+(8, NULL, NULL, NULL, 'sdfsdfsdf', 'sdfsdfsd'),
+(9, NULL, NULL, NULL, 'gsdfgsfgfd', 'gfdgsdfgfd'),
+(10, 'sdfsdfs', 'fsdfsdf', 0, 'sdfsdf', 'sdfsdf');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -3,10 +3,11 @@
  * Created by JetBrains PhpStorm.
  * User: doradu
  * Date: 6/7/14
- * Time: 10:40 AM
+ * Time: 12:10 PM
  * To change this template use File | Settings | File Templates.
  */
-class skillModel {
-    public $skill_id;
-    public $skill_name;
+
+class skillRelation {
+    public $id_skill;
+    public $user_id;
 }
