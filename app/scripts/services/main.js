@@ -25,6 +25,15 @@ mainServices.factory('mainServices', function($http, $rootScope, $cookieStore) {
                 this.user = user;
                 $cookieStore.put("user", user);
             }
+        },
+        getSkills: function() {
+            return $http.get('./php/controllers/skills.php?action=getSkills')
+                .then(function(result){
+                    return result.data;
+                });
         }
+
+
+
     };
 });
