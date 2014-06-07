@@ -38,6 +38,13 @@ mainServices.factory('mainServices', function($http, $rootScope, $cookieStore) {
                 this.user = user;
                 $cookieStore.put("user", user);
             }
+        },
+        getUsers: function() {
+            return $http.get('./php/controllers/user.php?action=getAll')
+                .then(function(result){
+                    return result.data;
+                });
         }
+
     };
 });

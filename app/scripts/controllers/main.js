@@ -28,11 +28,16 @@ mainControllers.controller('LoginCtrl' , ['$scope','$routeParams', 'mainServices
 mainControllers.controller('MainCtrl' , ['$scope','$routeParams', 'mainServices','$location',
     function($scope, $routeParams, mainServices, $location){
         var user = mainServices.userSession.getUser();
+
         if(!user){
              $location.path("/login");
         }else{
             $scope.user = user;
         }
+        mainServices.getUsers().then(function(data){
+            console.log(data);
+            $scope.users = data;
+        });
     }]);
 
 mainControllers.controller('EditProfileCtrl' , ['$scope','$routeParams', 'mainServices','$location',
@@ -49,6 +54,7 @@ mainControllers.controller('EditProfileCtrl' , ['$scope','$routeParams', 'mainSe
             });            
         };
     }]);
+
 
 mainControllers.controller('SearchCtrl' , ['$scope', '$http','mainServices',
     function($scope, $http, mainServices){
