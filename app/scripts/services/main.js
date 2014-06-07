@@ -22,11 +22,19 @@ mainServices.factory('mainServices', function($http, $rootScope, $cookieStore) {
         },
         setSkillRelation: function(user_id,skill_id,skill_level){
             var data = { user_id:user_id, skill_id:skill_id, level:skill_level};
-            return $http.post('php/controllers/skills.php?action=addSkills',data,{headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}})
+            return $http.post('php/controllers/skills.php?action=addSkill',data,{headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}})
                 .then(function(result){
                    return result;                       
                 });
         },
+
+            getMySkills: function(userId) {
+            return $http.get('./php/controllers/skills.php?action=getUserSkills&user_id='+userId)
+                .then(function(result){
+                    return result.data;
+                });
+        },
+
         userSession : {
             user :null,
             getUser:function(){
