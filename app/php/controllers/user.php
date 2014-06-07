@@ -90,7 +90,7 @@ class userController
         return json_encode($users);
     }
     public function getUserSkills($_id = FALSE){
-        $sql = "SELECT s.level, s.user_id,s.skill_id,s.id_relation, sk.skill_name FROM skillrelation s,skills sk where s.user_id = :user_id and sk.skill_id = s.skill_id ";
+        $sql = "SELECT s.level, s.user_id,s.skill_id, sk.skill_name FROM skillrelation s,skills sk where s.user_id = :user_id and sk.skill_id = s.skill_id ";
         $q = $this->database->prepare($sql);
         $q->execute(array(':user_id'=> $_id));
 

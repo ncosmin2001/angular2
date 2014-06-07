@@ -48,6 +48,7 @@ mainControllers.controller('MainCtrl' , ['$scope','$routeParams', 'mainServices'
         }
         mainServices.getUsers().then(function(data){
             $scope.users = data;
+            console.log($scope.users);
         });
     }]);
 
@@ -80,10 +81,12 @@ mainControllers.controller('SearchCtrl' , ['$scope', '$http','mainServices',
         var user = mainServices.userSession.getUser();
         $scope.user = user;
         $scope.mySkills = [];
-        //{"id_skill":null,"user_id":"1","skill_id":"0","id_relation":"1"}
+
         mainServices.getMySkills(user.user_id).then(function(data){
             $scope.mySkills = data;
+            console.log($scope.mySkills);
         });
+
         mainServices.getSkills().then(function(data){
 
             for( var i = 0; i < data.length ; i++)
@@ -91,26 +94,23 @@ mainControllers.controller('SearchCtrl' , ['$scope', '$http','mainServices',
                 data[i].skill_level = 1;
             }
             $scope.tags = data;
+
+
         });
+
         $scope.addSkill = function(tag)
         {
+
            var user = mainServices.userSession.getUser();
             mainServices.setSkillRelation(user.user_id, tag.skill_id, tag.skill_level).then(function(data){
+
                 mainServices.getMySkills(user.user_id).then(function(data){
                     $scope.mySkills = data;
                 });
             });
         }
 
+
+
     }]);
 
-/*
-angular.module('workshopApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
-*/
