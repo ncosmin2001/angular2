@@ -50,14 +50,10 @@ mainControllers.controller('EditProfileCtrl' , ['$scope','$routeParams', 'mainSe
 
 mainControllers.controller('SearchCtrl' , ['$scope', '$http','mainServices',
     function($scope, $http, mainServices){
-       // $scope.tags =
-            mainServices.getSkills().then(function(data){
-                $scope.tags = data;
+        mainServices.getSkills().then(function(data){
+            $scope.tags = data;
+        });
 
-            });
-        /*$scope.loadTags = function(query) {
-            return $http.get('./php/controllers/skills.php?action=getSkills');
-        };*/
     }]);
 
 /*
