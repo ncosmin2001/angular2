@@ -69,8 +69,24 @@ class userController
         }
 
     }
-
-
+    public function getAll()
+    {
+        $user = new userModel();
+        $statement = $this->database->prepare("select * from users");
+        $statement->execute();
+        $rows = $statement->fetchAll();
+        foreach($rows as $row)
+        {
+            $user = new userModel();
+            $user->user_id = (int)$row['user_id'];
+            $user->user_first_name = $row['user_first_name'];
+            $user->user_last_name = $row['user_last_name'];
+            $user->user_location = $row['user_location'];
+            $user->user_name = $row['user_name'];
+            $users[] = $user;
+        }
+        return json_encode($users);
+    }
 
 }
 
