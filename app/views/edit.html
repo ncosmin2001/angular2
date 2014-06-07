@@ -43,7 +43,7 @@
                             <br>
                             <div class="form-group">
                                 <div class="col-xs-offset-3 col-xs-9">
-                                    <input type="submit" class="btn btn-primary" value="Submit">
+                                    <input type="submit" class="btn btn-primary"  value="Submit">
                                     <input type="reset" class="btn btn-default" value="Reset">
                                 </div>
                             </div>
@@ -74,9 +74,9 @@
             </tr>
         </thead>
         <tr ng-show="searchText" ng-repeat="tag in tags|filter:searchText|limitTo:10">
-            <td >{{tag.skill_name}} </td>
-            <td><span class="glyphicon glyphicon-plus" ng-click="addSkill(tag)"></span>
-               <input style="width:20%; display:inline-block;"  type="number" maxlength="1" class="form-control" ng-model="tag.skill_level" value="1" />
+            <td style="font-size:18px;">{{tag.skill_name}} </td>
+            <td>
+               <input style="width:20%; display:inline-block;"  type="number" maxlength="1" class="form-control margin_2px" ng-model="tag.skill_level" value="1" /><span class="glyphicon glyphicon-plus margin_2px" ng-click="addSkill(tag)"></span>
             </td>
         </tr>
         </div>
