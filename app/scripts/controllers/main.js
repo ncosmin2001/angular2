@@ -49,12 +49,19 @@ mainControllers.controller('EditProfileCtrl' , ['$scope','$routeParams', 'mainSe
             });            
         };
     }]);
-
+ 
 mainControllers.controller('SearchCtrl' , ['$scope', '$http','mainServices',
     function($scope, $http, mainServices){
         mainServices.getSkills().then(function(data){
             $scope.tags = data;
         });
+        $scope.addSkill = function(tag)
+        {
+            console.log(tag);
+            mainServices.setSkillRelation(tag.skill_id, tag.skill_level).then(function(data){
+                $scope.tags = data;
+            });;
+        }
 
     }]);
 
