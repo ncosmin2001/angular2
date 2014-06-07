@@ -46,6 +46,7 @@ class userController
 
     public function updateUser(){
         $req= $_REQUEST;
+        $params = array('user_first_name','user_last_name','user_location','user_name','user_id','user_password');
         unset($req['action']);
         try{
             $sql = "UPDATE users SET
@@ -61,7 +62,9 @@ class userController
             $x = array();
 
             foreach($req as $key => $val){
-                $x[':'.$key]= $val;
+                if(in_array($key, $params)){
+                    $x[':'.$key]= $val;
+                }
             }
             $q->execute($x);
             echo json_encode(array('status'=>'ok'));
