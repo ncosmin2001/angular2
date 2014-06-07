@@ -62,12 +62,16 @@ mainControllers.controller('SearchCtrl' , ['$scope', '$http','mainServices',
             $scope.mySkills = data;
         });
         mainServices.getSkills().then(function(data){
+
+            for( var i = 0; i < data.length ; i++)
+            {
+                data[i].skill_level = 1;
+            }
             $scope.tags = data;
         });
         $scope.addSkill = function(tag)
         {
            var user = mainServices.userSession.getUser();
-            console.log(tag);
             mainServices.setSkillRelation(user.user_id, tag.skill_id, tag.skill_level).then(function(data){
                 mainServices.getMySkills(user.user_id).then(function(data){
                     $scope.mySkills = data;
