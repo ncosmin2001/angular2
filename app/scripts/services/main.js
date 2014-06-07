@@ -14,7 +14,12 @@ mainServices.factory('mainServices', function($http, $rootScope, $cookieStore) {
                        return result.data;                       
                     });
         },
-
+        updateUser: function(user){
+            return $http.post('./php/controllers/user.php?action=updateUser',user,{headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}})
+                    .then(function(result){
+                       return result.data;                       
+                    });
+        },
         userSession : {
             user :null,
             getUser:function(){
