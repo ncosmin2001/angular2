@@ -22,21 +22,32 @@ class skillsController
     }
 
     public function addSkill(){
-        $userId = $_REQUEST['user_id'];
-        $skillId = $_REQUEST['skill_id'];
 
-        $sql = "INSERT INTO skillrelation (user_id,skill_id) VALUES (:user_id,:skill_id)";
+        $sql = "INSERT INTO skillrelation (user_id,skill_id, level) VALUES (:user_id,:skill_id,:level)";
+
         $st = $this->database->prepare($sql);
-        $st->execute(array(':user_id' => $_REQUEST['user_id'],':skill_id' => $_REQUEST['skill_id']));
+
+        $st->execute(array(':user_id' => $_REQUEST['user_id'],':skill_id' => $_REQUEST['skill_id'],':level'=>$_REQUEST['level']));
 
         echo json_encode(
             array(
                 'id' => $this->database->lastInsertId()
                 ,'user_id' => $_REQUEST['user_id']
                 ,'skill_id' => $_REQUEST['skill_id']
+                ,'level'=>$_REQUEST['level']
             )
         );
 
+    }
+
+    public function getUserSkills(){
+        $userId = $_REQUEST['user_id'];
+        $sql = "SELECT user_id,skill_id,id_relation FROM skillrelation where user_id = :user_id";
+        $q = $this->database->prepare($sql);
+        $q->execute(array(':user_id'=> $userId));
+
+        $result = $q->fetchAll(PDO::FETCH_CLASS, "skillRelation");
+        echo json_encode($result);
     }
 
 
