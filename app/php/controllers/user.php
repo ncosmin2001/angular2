@@ -17,18 +17,18 @@ class userController
 		if($row === FALSE)
 		{
 			$this->insert();
-			$user->id       = $this->database->lastInsertId();
-			$user->name     = $_REQUEST['user_name'];
-			$user->password = $_REQUEST['user_password'];
+			$user->user_id       = $this->database->lastInsertId();
+			$user->user_name     = $_REQUEST['user_name'];
+			$user->user_password = $_REQUEST['user_password'];
 		}
 		else
 		{
-			$user->id = (int)$row['user_id'];
-			$user->firstName = $row['user_first_name'];
-			$user->lastName = $row['user_last_name'];
-			$user->location = $row['user_location'];
-			$user->name = $row['user_name'];
-			$user->password = $row['user_password'];
+			$user->user_id = (int)$row['user_id'];
+			$user->user_first_name = $row['user_first_name'];
+			$user->user_last_name = $row['user_last_name'];
+			$user->user_location = $row['user_location'];
+			$user->user_name = $row['user_name'];
+			$user->user_password = $row['user_password'];
 		}
 		return json_encode($user);
 	}

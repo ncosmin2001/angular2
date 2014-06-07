@@ -3,11 +3,11 @@
 class userModel
 {
 
-	public $id;
-	public $firstName;
-	public $lastName;
-	public $location;
-	public $name;
-	public $password;
+	public $user_id;
+	public $user_first_name;
+	public $user_last_name;
+	public $user_location;
+	public $user_name;
+	public $user_password;
 
 }
