@@ -28,9 +28,9 @@
                 <td>{{user.user_first_name}}</td>
                 <td>{{user.user_last_name}}</td>
                 <td>
-                    <ul ng-repeat="skill in user.skills">
-                        <li>{{skill.skill_name}} {{skill.skill_id}}</li>
-                    </ul>
+                    <div ng-repeat="skill in user.skills">
+                        <span style="margin-right: 5px;" class="label label-primary pull-left">{{skill.skill_name}} {{skill.skill_id}}</span>
+                    </div>
                 </td>
               </tr>
             </tbody>
