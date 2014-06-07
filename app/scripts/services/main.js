@@ -20,9 +20,9 @@ mainServices.factory('mainServices', function($http, $rootScope, $cookieStore) {
                     return result.data;
                 });
         },
-        setSkillRelation: function(user_id,skill_id){
-            var data = { user_id:user_id, skill_id:skill_id};    
-            console.log(data);
+        setSkillRelation: function(skill_id,skill_level,userSession){
+            var user = userSession.getUser(),
+                data = { user_id:user.user_id, skill_id:skill_id, level:skill_level};
             return $http.post('php/controllers/skills.php?action=addSkills',data,{headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}})
                 .then(function(result){
                    return result;                       
