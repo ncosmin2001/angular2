@@ -44,6 +44,10 @@ mainServices.factory('mainServices', function($http, $rootScope, $cookieStore) {
             setUser:function(user){
                 this.user = user;
                 $cookieStore.put("user", user);
+            },
+            deleteUser:function()
+            {
+                $cookieStore.put("user", null);
             }
         },
         getUsers: function() {
