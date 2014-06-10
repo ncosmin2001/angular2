@@ -1,101 +1,104 @@
+<div ng-include src="'./views/partial/menu.html'"></div>
+<div class="container">
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Edit User:</h4>
-            </div>
-            <div class="modal-body">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Edit User:</h4>
+                </div>
+                <div class="modal-body">
 
-                        <form class="form-horizontal" ng-submit="update(user)" novalidate>
-                            <input type="hidden" name="user.user_id" value="{{user.user_id}}"/>
-                            <div class="form-group">
-                                <label class="control-label col-xs-3" for="firstName">First Name:</label>
-                                <div class="col-xs-9">
-                                    <input type="text" class="form-control" ng-model="user.user_first_name" id="firstName">
+                            <form class="form-horizontal" ng-submit="update(user)" novalidate>
+                                <input type="hidden" name="user.user_id" value="{{user.user_id}}"/>
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3" for="firstName">First Name:</label>
+                                    <div class="col-xs-9">
+                                        <input type="text" class="form-control" ng-model="user.user_first_name" id="firstName">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-xs-3" for="lastName">Last Name:</label>
-                                <div class="col-xs-9">
-                                    <input type="text" class="form-control" ng-model="user.user_last_name" id="lastName">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3" for="lastName">Last Name:</label>
+                                    <div class="col-xs-9">
+                                        <input type="text" class="form-control" ng-model="user.user_last_name" id="lastName">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-xs-3" for="inputLocation">Location:</label>
-                                <div class="col-xs-9">
-                                    <input type="text" class="form-control" ng-model="user.user_location" id="inputLocation">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3" for="inputLocation">Location:</label>
+                                    <div class="col-xs-9">
+                                        <input type="text" class="form-control" ng-model="user.user_location" id="inputLocation">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-xs-3" for="inputUsername">Username:</label>
-                                <div class="col-xs-9">
-                                    <input type="text" class="form-control" ng-model="user.user_name" id="inputUsername">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3" for="inputUsername">Username:</label>
+                                    <div class="col-xs-9">
+                                        <input type="text" class="form-control" ng-model="user.user_name" id="inputUsername">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-xs-3" for="inputPassword">Password:</label>
-                                <div class="col-xs-9">
-                                    <input type="password" class="form-control" ng-model="user.user_password" id="inputPassword">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3" for="inputPassword">Password:</label>
+                                    <div class="col-xs-9">
+                                        <input type="password" class="form-control" ng-model="user.user_password" id="inputPassword">
+                                    </div>
                                 </div>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <div class="col-xs-offset-3 col-xs-9">
-                                    <input type="submit" class="btn btn-primary"  value="Submit">
-                                    <input type="reset" class="btn btn-default" value="Reset">
+                                <br>
+                                <div class="form-group">
+                                    <div class="col-xs-offset-3 col-xs-9">
+                                        <input type="submit" class="btn btn-primary"  value="Submit">
+                                        <input type="reset" class="btn btn-default" value="Reset">
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
+                            </form>
+                        </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="row"  ng-controller="SearchCtrl">
-    <div class="col-md-2">
-        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-            Edit profile
-        </button>
-    </div>
-<div class="col-md-6">
-        <table class="table  table-hover">
-        <thead>
-            <tr>
-                <th colspan="2">
-                    <div class="input-group">
-                        <span class="input-group-addon"> Skills: </span>
-                        <input style="width:350px;" type="text" class="form-control" ng-model="searchText">
-                    </div>
-                </th>
+    <div class="row"  ng-controller="SearchCtrl">
+        <div class="col-md-2">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                Edit profile
+            </button>
+        </div>
+    <div class="col-md-6">
+            <table class="table  table-hover">
+            <thead>
+                <tr>
+                    <th colspan="2">
+                        <div class="input-group">
+                            <span class="input-group-addon"> Skills: </span>
+                            <input style="width:350px;" type="text" class="form-control" ng-model="searchText">
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-show="searchText" ng-repeat="tag in tags|filter:searchText|limitTo:10">
+                <td style="font-size:18px;">{{tag.skill_name}} </td>
+                <td>
+                   <input style="width:50px; display:inline-block;"  type="number" min="1" max="5" class="form-control margin_2px" ng-model="tag.skill_level" value="1" /><span class="glyphicon glyphicon-plus margin_2px" ng-click="addSkill(tag)"></span>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            <tr ng-show="searchText" ng-repeat="tag in tags|filter:searchText|limitTo:10">
-            <td style="font-size:18px;">{{tag.skill_name}} </td>
-            <td>
-               <input style="width:50px; display:inline-block;"  type="number" min="1" max="5" class="form-control margin_2px" ng-model="tag.skill_level" value="1" /><span class="glyphicon glyphicon-plus margin_2px" ng-click="addSkill(tag)"></span>
-            </td>
-        </tr>
-        </tbody>
+            </tbody>
+            </table>
+
+    </div>
+    <div class="col-md-4">
+        <table class="table">
+            <thead>
+            <tr>
+                <th><h4>My Skills</h4></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="skill in mySkills">
+                <td><h4><small>{{skill.skill_name}} - <span class="label label-{{skill.level}} margin_2px">{{skill.level}}</span></small></h4></td>
+            </tr>
+            </tbody>
         </table>
+    </div>
 
-</div>
-<div class="col-md-4">
-    <table class="table">
-        <thead>
-        <tr>
-            <th><h4>My Skills</h4></td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="skill in mySkills">
-            <td><h4><small>{{skill.skill_name}} - <span class="label label-{{skill.level}} margin_2px">{{skill.level}}</span></small></h4></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
+    </div>
 </div>
 
