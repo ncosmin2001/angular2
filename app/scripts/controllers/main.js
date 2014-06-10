@@ -48,12 +48,12 @@ mainControllers.controller('MainCtrl' , ['$scope','$routeParams', 'mainServices'
             //console.log($scope.users);
         });
 
-        $scope.curPage = 0;
+        $scope.curPage  = 0;
         $scope.pageSize = 5;
-
+        $scope.Math     = window.Math;//provide Math object for template
         $scope.numberOfPages = function()
         {
-            return Math.ceil($scope.userCount / $scope.pageSize);
+            return Math.ceil($scope.filtered.length / $scope.pageSize);
         }
 
         $scope.getNextPage = function()
@@ -64,6 +64,12 @@ mainControllers.controller('MainCtrl' , ['$scope','$routeParams', 'mainServices'
                 $scope.curPage = nextPage;
             }
         }
+        $scope.$watch('searchUser', function(newValue, oldValue) {
+            //when filtering go to page 1 of results
+            $scope.curPage = 0;
+            console.log('reset');
+        });
+
         $scope.getPrevPage = function()
         {
             var prevPage = parseInt($scope.curPage,10)-1;
