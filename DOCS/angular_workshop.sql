@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 07, 2014 at 02:17 PM
+-- Generation Time: Jun 10, 2014 at 08:06 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -46,12 +46,16 @@ INSERT INTO `skillrelation` (`user_id`, `skill_id`, `level`) VALUES
 (17, 5, 4),
 (18, 1, 1),
 (18, 2, 3),
+(18, 3, 4),
 (18, 4, 2),
 (18, 5, 2),
 (19, 5, 3),
 (19, 8, 5),
 (20, 5, 5),
-(20, 8, 4);
+(20, 8, 4),
+(21, 1, 1),
+(21, 5, 5),
+(21, 8, 5);
 
 -- --------------------------------------------------------
 
@@ -93,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_name` varchar(10) NOT NULL,
   `user_password` varchar(10) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `users`
@@ -104,9 +108,10 @@ INSERT INTO `users` (`user_id`, `user_first_name`, `user_last_name`, `user_locat
 (15, NULL, NULL, NULL, 'fsadfsadfa', 'sadfsadfsa'),
 (16, NULL, NULL, NULL, 'fsdfsd', 'fsdfsdfsd'),
 (17, NULL, NULL, NULL, 'fdfsd', 'sdfsdf'),
-(18, 'maria', 'radu', 0, 'marian', '123456'),
+(18, 'marian', 'radu', 0, 'marian', '123456'),
 (19, NULL, NULL, NULL, 'andrei', '1234'),
-(20, NULL, NULL, NULL, 'test5', '1234');
+(20, NULL, NULL, NULL, 'test5', '1234'),
+(21, 'mita', 'test', 0, 'test', 'test');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
