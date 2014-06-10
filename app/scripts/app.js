@@ -8,6 +8,15 @@
  *
  * Main module of the application.
  */
+/*
+angular.module('workshopApp').filter('pagination', function()
+{
+    return function(input, start)
+    {
+        start = +start;
+        return input.slice(start);
+    };
+});*/
 angular
   .module('workshopApp', [
     'ngAnimate',
@@ -19,6 +28,17 @@ angular
     'mainServices',
     'mainControllers'
   ])
+  .filter('pagination', function()
+    {
+        return function(input, start)
+        {
+            if(typeof input !== 'undefined')
+            {
+                start = +start;
+                return input.slice(start);
+            }
+        };
+    })
   .config(function ($routeProvider, $httpProvider) {
     $routeProvider
       .when('/', {
@@ -42,5 +62,5 @@ angular
             return data;
         }
         return $.param(data);
-    }
-  });
+    }}
+);

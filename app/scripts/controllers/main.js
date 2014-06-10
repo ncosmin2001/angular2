@@ -40,10 +40,18 @@ mainControllers.controller('MainCtrl' , ['$scope','$routeParams', 'mainServices'
     function($scope, $routeParams, mainServices, $location){
         mainServices.userSession.checkLogin($location);
         $scope.user = mainServices.userSession.getUser();
+        $scope.userCount = 0;
         mainServices.getUsers().then(function(data){
             $scope.users = data;
-            console.log($scope.users);
+            $scope.userCount = $scope.users.length;
+            //console.log($scope.users);
         });
+        $scope.curPage = 0;
+        $scope.pageSize = 5;
+        $scope.numberOfPages = function()
+        {
+            return Math.ceil($scope.userCount / $scope.pageSize);
+        }
     }]);
 
 mainControllers.controller('EditProfileCtrl' , ['$scope','$routeParams', 'mainServices','$location',
@@ -67,21 +75,20 @@ mainControllers.controller('SearchCtrl' , ['$scope', '$http','mainServices','$lo
         $scope.user = user;
         $scope.mySkills = [];
 
-        mainServices.getMySkills(user.user_id).then(function(data){
+        mainServices.getMySkills(user.user_id).then(function(data)
+        {
             $scope.mySkills = data;
-            console.log($scope.mySkills);
+            //console.log($scope.mySkills);
         });
-
-        mainServices.getSkills().then(function(data){
-
+        mainServices.getSkills().then(function(data)
+        {
             for( var i = 0; i < data.length ; i++)
             {
                 data[i].skill_level = 1;
             }
             $scope.tags = data;
-
-
         });
+
         $scope.addSkill = function(tag)
         {
            var user = mainServices.userSession.getUser();

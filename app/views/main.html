@@ -24,7 +24,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="user in users | filter:searchUser|limitTo:10">
+              <tr ng-repeat="user in users | filter:searchUser| pagination: curPage * pageSize | limitTo: pageSize">
                 <td>{{user.user_name}}</td>
                 <td>{{user.user_first_name}}</td>
                 <td>{{user.user_last_name}}</td>
@@ -36,6 +36,19 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div class="pagination-div" ng-show="users.length">
+            <ul class="pager">
+                <li>
+                    <a ng-disabled="curPage == 0" ng-click="curPage=curPage-1">PREV</a>
+                </li>
+                <li>
+                    <span>Page {{curPage + 1}} of {{ numberOfPages() }}</span>
+                </li>
+                <li>
+                    <a type="button" ng-disabled="curPage >= userCount/pageSize - 1" ng-click="curPage = curPage+1">NEXT </a>
+                </li>
+            </ul>
         </div>
       </div>
 </div>
