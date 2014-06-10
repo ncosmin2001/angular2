@@ -48,6 +48,12 @@ mainServices.factory('mainServices', function($http, $rootScope, $cookieStore) {
             deleteUser:function()
             {
                 $cookieStore.put("user", null);
+            },
+            checkLogin:function(location){
+                if(!this.getUser())
+                {
+                    location.path("/login");
+                }
             }
         },
         getUsers: function() {

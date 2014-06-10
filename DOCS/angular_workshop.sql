@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 3.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 10, 2014 at 08:06 AM
--- Server version: 5.6.12-log
--- PHP Version: 5.4.12
+-- Generation Time: Jun 10, 2014 at 08:33 AM
+-- Server version: 5.5.24-log
+-- PHP Version: 5.3.13
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,43 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `angular_workshop`
 --
-CREATE DATABASE IF NOT EXISTS `angular_workshop` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `angular_workshop`;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `skillrelation`
---
-
-CREATE TABLE IF NOT EXISTS `skillrelation` (
-  `user_id` int(11) NOT NULL,
-  `skill_id` int(11) NOT NULL,
-  `level` int(11) NOT NULL,
-  PRIMARY KEY (`user_id`,`skill_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `skillrelation`
---
-
-INSERT INTO `skillrelation` (`user_id`, `skill_id`, `level`) VALUES
-(17, 1, 4),
-(17, 2, 4),
-(17, 4, 1),
-(17, 5, 4),
-(18, 1, 1),
-(18, 2, 3),
-(18, 3, 4),
-(18, 4, 2),
-(18, 5, 2),
-(19, 5, 3),
-(19, 8, 5),
-(20, 5, 5),
-(20, 8, 4),
-(21, 1, 1),
-(21, 5, 5),
-(21, 8, 5);
 
 -- --------------------------------------------------------
 
@@ -112,6 +75,41 @@ INSERT INTO `users` (`user_id`, `user_first_name`, `user_last_name`, `user_locat
 (19, NULL, NULL, NULL, 'andrei', '1234'),
 (20, NULL, NULL, NULL, 'test5', '1234'),
 (21, 'mita', 'test', 0, 'test', 'test');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `x_user_skill`
+--
+
+CREATE TABLE IF NOT EXISTS `x_user_skill` (
+  `user_id` int(11) NOT NULL,
+  `skill_id` int(11) NOT NULL,
+  `level` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`,`skill_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `x_user_skill`
+--
+
+INSERT INTO `x_user_skill` (`user_id`, `skill_id`, `level`) VALUES
+(17, 1, 4),
+(17, 2, 4),
+(17, 4, 1),
+(17, 5, 4),
+(18, 1, 1),
+(18, 2, 3),
+(18, 3, 4),
+(18, 4, 2),
+(18, 5, 2),
+(19, 5, 3),
+(19, 8, 5),
+(20, 5, 5),
+(20, 8, 4),
+(21, 1, 1),
+(21, 5, 5),
+(21, 8, 5);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

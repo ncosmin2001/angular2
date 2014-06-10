@@ -13,6 +13,10 @@ var mainControllers = angular.module('mainControllers', []);
 mainControllers.controller('LoginCtrl' , ['$scope','$routeParams', 'mainServices','$location',
     function($scope, $routeParams, mainServices, $location){
         $scope.user = mainServices.userSession.getUser();
+        if(typeof $scope.user =='undefined')
+        {
+            $scope.user = false;
+        }
         $scope.credentials = {
             user_name: '',
             user_password: ''
@@ -30,18 +34,12 @@ mainControllers.controller('LoginCtrl' , ['$scope','$routeParams', 'mainServices
             mainServices.userSession.setUser(false);
             $location.path("/login");
         }
-
-
     }]);
 
 mainControllers.controller('MainCtrl' , ['$scope','$routeParams', 'mainServices','$location',
     function($scope, $routeParams, mainServices, $location){
-        var user = mainServices.userSession.getUser();
-        if(!user){
-             $location.path("/login");
-        }else{
-            $scope.user = user;
-        }
+        mainServices.userSession.checkLogin($location);
+        $scope.user = mainServices.userSession.getUser();
         mainServices.getUsers().then(function(data){
             $scope.users = data;
             console.log($scope.users);
@@ -50,6 +48,7 @@ mainControllers.controller('MainCtrl' , ['$scope','$routeParams', 'mainServices'
 
 mainControllers.controller('EditProfileCtrl' , ['$scope','$routeParams', 'mainServices','$location',
     function($scope, $routeParams, mainServices, $location){
+        mainServices.userSession.checkLogin($location);
         $scope.user = mainServices.userSession.getUser();
         $scope.update = function(user){            
             mainServices.updateUser(user).then(function(data){
@@ -61,14 +60,9 @@ mainControllers.controller('EditProfileCtrl' , ['$scope','$routeParams', 'mainSe
         };
     }]);
 
-
-
-mainControllers.controller('MenuCtrl' , ['$scope', '$http','mainServices','$location',
+mainControllers.controller('SearchCtrl' , ['$scope', '$http','mainServices','$location',
     function($scope, $http, mainServices, $location){
-
-    }]);
-mainControllers.controller('SearchCtrl' , ['$scope', '$http','mainServices',
-    function($scope, $http, mainServices){
+        mainServices.userSession.checkLogin($location);
         var user = mainServices.userSession.getUser();
         $scope.user = user;
         $scope.mySkills = [];
@@ -88,10 +82,8 @@ mainControllers.controller('SearchCtrl' , ['$scope', '$http','mainServices',
 
 
         });
-
         $scope.addSkill = function(tag)
         {
-
            var user = mainServices.userSession.getUser();
             mainServices.setSkillRelation(user.user_id, tag.skill_id, tag.skill_level).then(function(data){
 
@@ -100,8 +92,5 @@ mainControllers.controller('SearchCtrl' , ['$scope', '$http','mainServices',
                 });
             });
         }
-
-
-
     }]);
 

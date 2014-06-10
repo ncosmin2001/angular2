@@ -23,7 +23,7 @@ class skillsController
 
     public function addSkill(){
 
-        $sql = "INSERT INTO skillrelation (user_id, skill_id, level) VALUES (:user_id,:skill_id,:level)
+        $sql = "INSERT INTO x_user_skill (user_id, skill_id, level) VALUES (:user_id,:skill_id,:level)
   ON DUPLICATE KEY UPDATE level=:level ";
 
         $st = $this->database->prepare($sql);
@@ -45,7 +45,7 @@ class skillsController
 
     public function getUserSkills(){
         $userId = $_REQUEST['user_id'];
-        $sql = "SELECT s.level, s.user_id,s.skill_id, sk.skill_name FROM skillrelation s,skills sk where s.user_id = :user_id and sk.skill_id = s.skill_id ";
+        $sql = "SELECT s.level, s.user_id,s.skill_id, sk.skill_name FROM x_user_skill s,skills sk where s.user_id = :user_id and sk.skill_id = s.skill_id ";
         $q = $this->database->prepare($sql);
         $q->execute(array(':user_id'=> $userId));
 
