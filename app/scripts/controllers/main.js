@@ -41,16 +41,36 @@ mainControllers.controller('MainCtrl' , ['$scope','$routeParams', 'mainServices'
         mainServices.userSession.checkLogin($location);
         $scope.user = mainServices.userSession.getUser();
         $scope.userCount = 0;
+
         mainServices.getUsers().then(function(data){
             $scope.users = data;
             $scope.userCount = $scope.users.length;
             //console.log($scope.users);
         });
+
         $scope.curPage = 0;
         $scope.pageSize = 5;
+
         $scope.numberOfPages = function()
         {
             return Math.ceil($scope.userCount / $scope.pageSize);
+        }
+
+        $scope.getNextPage = function()
+        {
+            var nextPage = parseInt($scope.curPage,10)+1;
+            if(nextPage<this.numberOfPages())
+            {
+                $scope.curPage = nextPage;
+            }
+        }
+        $scope.getPrevPage = function()
+        {
+            var prevPage = parseInt($scope.curPage,10)-1;
+            if(prevPage>=0)
+            {
+                $scope.curPage = prevPage;
+            }
         }
     }]);
 

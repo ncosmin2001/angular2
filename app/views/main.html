@@ -6,49 +6,51 @@
         </span>
         <input class="form-control" id='searchUser' type="text" ng-model="searchUser">
     </div>
-    <br/>
-    <br/>
+    <br/><br/>
     <div class="bs-example">
-        <div class="panel panel-default">
-          <!-- Default panel contents -->
-          <div class="panel-heading">User list</div>
+        <div ng-show="users.length">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">User list</div>
 
-          <!-- Table -->
-          <table class="table">
-            <thead>
-              <tr>
-                <th>User name</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Skills</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="user in users | filter:searchUser| pagination: curPage * pageSize | limitTo: pageSize">
-                <td>{{user.user_name}}</td>
-                <td>{{user.user_first_name}}</td>
-                <td>{{user.user_last_name}}</td>
-                <td>
-                    <div ng-repeat="skill in user.skills">
-                        <span class="label label-{{skill.level}} pull-left margin_2px">{{skill.skill_name}} {{skill.level}}</span>
-                    </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                <!-- Table -->
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>User name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Skills</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="user in users | filter:searchUser| pagination: curPage * pageSize | limitTo: pageSize">
+                        <td>{{user.user_name}}</td>
+                        <td>{{user.user_first_name}}</td>
+                        <td>{{user.user_last_name}}</td>
+                        <td>
+                            <div ng-repeat="skill in user.skills">
+                                <span class="label label-{{skill.level}} pull-left margin_2px">{{skill.skill_name}} {{skill.level}}</span>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination-div">
+                <ul class="pager">
+                    <li>
+                        <a ng-disabled="curPage == 0" ng-click="getPrevPage()">PREV</a>
+                    </li>
+                    <li>
+                        <span>Page {{curPage + 1}} of {{ numberOfPages() }}</span>
+                    </li>
+                    <li>
+                        <a type="button" ng-disabled="curPage >= userCount/pageSize - 1" ng-click="getNextPage()">NEXT </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="pagination-div" ng-show="users.length">
-            <ul class="pager">
-                <li>
-                    <a ng-disabled="curPage == 0" ng-click="curPage=curPage-1">PREV</a>
-                </li>
-                <li>
-                    <span>Page {{curPage + 1}} of {{ numberOfPages() }}</span>
-                </li>
-                <li>
-                    <a type="button" ng-disabled="curPage >= userCount/pageSize - 1" ng-click="curPage = curPage+1">NEXT </a>
-                </li>
-            </ul>
-        </div>
-      </div>
+        <div ng-hide="users.length">Can`t find any users...wierd...</div>
+    </div>
 </div>
