@@ -79,7 +79,7 @@ body {
 
 
 .margin_2px{margin: 2px;}
-
+.reset_min_width{min-width: 100% !important;}
 .label-1 {background-color: #d9534f;}
 .label-2 {background-color: #f0ad4e;}
 .label-3 {background-color: #5bc0de;}

@@ -18,7 +18,7 @@ class UserController extends BaseController {
         //var_dump($user);
         if(is_null($user))
         {
-            $user = new User;
+            $user = new App\Models\User;
             $user->user_name     = $userName;
             $user->user_password = Input::get('user_password');
             $user->save();

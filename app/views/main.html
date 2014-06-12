@@ -37,12 +37,12 @@
                         <td>
                             <div class="btn-group" ng-repeat="userTechnology in user.technologies">
                                 <button type="button" class="label label-3 pull-left margin_2px btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    {{userTechnology.technology.technology_name}}<span class="caret"></span>
+                                    {{userTechnology.technology.technology_name}} {{userTechnology.technology_level}} <span class="caret"></span>
                                 </button>
 
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu reset_min_width">
                                     <li ng-repeat="tehnologySkill in userTechnology.technology.skills">
-                                        <a class="label label-3 pull-left margin_2px">{{tehnologySkill.skill.skill_name}}<span class="badge">{{tehnologySkill.skill_level}}</a></span>
+                                        <a class="label pull-left margin_2px">{{tehnologySkill.skill.skill_name}} {{tehnologySkill.skill_level}}%</a>
                                     </li>
                                 </ul>
 
