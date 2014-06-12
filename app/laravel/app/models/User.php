@@ -16,4 +16,8 @@ class User extends \Eloquent {
     {
         return $this->hasMany('App\Models\User\Skill','user_id', 'user_id');
     }
+    public function technologies()
+    {
+        return $this->hasMany('App\Models\User\Technology','user_id', 'user_id');
+    }
 }

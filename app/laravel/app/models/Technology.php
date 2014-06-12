@@ -12,5 +12,8 @@ class Technology extends \Eloquent {
 	 */
 	protected $table = 'technologies';
     protected $primaryKey = "technology_id";
-
+    public function skills()
+    {
+        return $this->hasMany('App\Models\Technology\Skill','technology_id', 'technology_id');
+    }
 }

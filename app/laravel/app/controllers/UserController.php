@@ -50,7 +50,7 @@ class UserController extends BaseController {
             $userSkills->skill_id = Input::get('skill_id');
             $userSkills->user_id = Input::get('user_id');
         }
-        $userSkills->skill_level = Input::get('level');
+        $userSkills->skill_level = Input::get('skill_level');
         $userSkills->save();
         return Response::json($userSkills);
     }
@@ -67,6 +67,9 @@ class UserController extends BaseController {
     public function all()
     {
         $users   = App\Models\User::all();
+        $users->load('skills.skill');
+        $users->load('technologies.technology.skills.skill');
+        //$users->load('technologies.technology');
         return Response::json($users);
     }
 }

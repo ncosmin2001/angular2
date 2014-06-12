@@ -21,7 +21,7 @@ mainServices.factory('mainServices', function($http, $rootScope, $cookieStore) {
                 });
         },
         setSkillRelation: function(user_id,skill_id,skill_level){
-            var data = { user_id:user_id, skill_id:skill_id, level:skill_level};
+            var data = { user_id:user_id, skill_id:skill_id, skill_level:skill_level};
             return $http.post(serverUrl+'/user/skill/add',data,{headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}})
                 .then(function(result){
                    return result;                       

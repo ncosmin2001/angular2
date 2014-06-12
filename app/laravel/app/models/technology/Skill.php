@@ -11,5 +11,8 @@ class Skill extends \Eloquent {
      * @var string
      */
     protected $table = 'x_technology_skill';
-
+    public function skill()
+    {
+        return $this->hasOne('App\Models\Skill','skill_id','skill_id');
+    }
 }

@@ -30,19 +30,19 @@
                         <td>{{user.user_first_name}}</td>
                         <td>{{user.user_last_name}}</td>
                         <td>
-                            <div ng-repeat="skill in user.skills">
-                                <span class="label label-{{skill.level}} pull-left margin_2px">{{skill.skill_name}} {{skill.level}}</span>
+                            <div ng-repeat="userSkill in user.skills">
+                                <span class="label label-{{userSkill.skill_level}} pull-left margin_2px">{{userSkill.skill.skill_name}} {{userSkill.skill_level}}</span>
                             </div>
                         </td>
                         <td>
-                            <div class="btn-group" ng-repeat="technology in user.tehnologies">
+                            <div class="btn-group" ng-repeat="userTechnology in user.technologies">
                                 <button type="button" class="label label-3 pull-left margin_2px btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    {{technology.tehnology_name}}<span class="caret"></span>
+                                    {{userTechnology.technology.technology_name}}<span class="caret"></span>
                                 </button>
 
                                 <ul class="dropdown-menu">
-                                    <li ng-repeat="tehnologySkill in technology.skills">
-                                        <a class="label label-3 pull-left margin_2px">{{tehnologySkill.skill_name}}<span class="badge">{{tehnologySkill.skill_percent}}</a></span>
+                                    <li ng-repeat="tehnologySkill in userTechnology.technology.skills">
+                                        <a class="label label-3 pull-left margin_2px">{{tehnologySkill.skill.skill_name}}<span class="badge">{{tehnologySkill.skill_level}}</a></span>
                                     </li>
                                 </ul>
 
