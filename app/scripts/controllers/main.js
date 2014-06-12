@@ -85,11 +85,19 @@ mainControllers.controller('EditProfileCtrl' , ['$scope','$routeParams', 'mainSe
         $scope.user = mainServices.userSession.getUser();
         $scope.update = function(user){            
             mainServices.updateUser(user).then(function(data){
-                if(data){
-                    mainServices.userSession.setUser(user);
+                if(data.status){
                     $('#myModal').modal('hide');
-                }                
+                    $scope.user.errors = [];
+                    mainServices.userSession.setUser(user);
+                }
+                else
+                {
+                    $scope.user.errors = data.errors;
+                }
             });            
+        };
+        $scope.resetUser = function(){
+            $scope.user = mainServices.userSession.getUser();
         };
     }]);
 

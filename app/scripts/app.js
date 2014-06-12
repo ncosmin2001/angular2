@@ -49,7 +49,7 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
-      .when('/edit', {
+      .when('/user/edit', {
         templateUrl: 'views/edit.html',
         controller: 'EditProfileCtrl'
       })

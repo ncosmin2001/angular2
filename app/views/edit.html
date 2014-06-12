@@ -9,6 +9,11 @@
                     <h4 class="modal-title" id="myModalLabel">Edit User:</h4>
                 </div>
                 <div class="modal-body">
+                    <div ng-repeat="messages in user.errors">
+                        <div ng-repeat="message in messages">
+                            <p class="text-danger">{{message}}</p>
+                        </div>
+                    </div>
 
                             <form class="form-horizontal" ng-submit="update(user)" novalidate>
                                 <input type="hidden" name="user.user_id" value="{{user.user_id}}"/>
@@ -46,7 +51,7 @@
                                 <div class="form-group">
                                     <div class="col-xs-offset-3 col-xs-9">
                                         <input type="submit" class="btn btn-primary"  value="Submit">
-                                        <input type="reset" class="btn btn-default" value="Reset">
+                                        <a ng-click="resetUser()" class="btn btn-default">Reset</a>
                                     </div>
                                 </div>
                             </form>

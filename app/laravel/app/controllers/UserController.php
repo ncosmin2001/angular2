@@ -27,16 +27,23 @@ class UserController extends BaseController {
     }
     public function update()
     {
-        DB::table('users')
-            ->where('user_id', Input::get('user_id'))
-            ->update(array('user_first_name' => Input::get('user_first_name'),
-                           'user_last_name'  => Input::get('user_last_name'),
-                           'user_location'   => Input::get('user_location'),
-                           'user_location'   => Input::get('user_location'),
-                           'user_name'       => Input::get('user_name'),
-                           'user_password'   => Input::get('user_password')));
+        $validator = App\Models\User::validate(Input::all());
+        if($validator->passes())
+        {
+            DB::table('users')
+                ->where('user_id', Input::get('user_id'))
+                ->update(array('user_first_name' => Input::get('user_first_name'),
+                    'user_last_name'  => Input::get('user_last_name'),
+                    'user_location'   => Input::get('user_location'),
+                    'user_name'       => Input::get('user_name'),
+                    'user_password'   => Input::get('user_password')));
+            return Response::json(array('status'=>1));
+        }
+        else
+        {
+            return Response::json(array('status'=>0,'errors'=>$validator->messages()));
 
-        return Response::json(array('status'=>'ok'));
+        }
     }
     public function addSkill()
     {
