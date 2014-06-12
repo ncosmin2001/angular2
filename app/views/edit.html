@@ -92,8 +92,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="skill in mySkills">
-                <td><h4><small>{{skill.skill_name}} - <span class="label label-{{skill.level}} margin_2px">{{skill.level}}</span></small></h4></td>
+            <tr ng-repeat="userSkill in mySkills">
+                <td><h4><small>{{userSkill.skill.skill_name}} - <span class="label label-{{userSkill.skill_level}} margin_2px">{{userSkill.skill_level}}</span></small></h4></td>
             </tr>
             </tbody>
         </table>
@@ -101,4 +101,3 @@
 
     </div>
 </div>
-

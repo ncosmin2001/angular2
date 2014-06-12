@@ -67,7 +67,6 @@ mainControllers.controller('MainCtrl' , ['$scope','$routeParams', 'mainServices'
         $scope.$watch('searchUser', function(newValue, oldValue) {
             //when filtering go to page 1 of results
             $scope.curPage = 0;
-            console.log('reset');
         });
 
         $scope.getPrevPage = function()

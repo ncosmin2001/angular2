@@ -1,35 +1,35 @@
 var mainServices = angular.module('mainServices', ['ngResource']);
-
+var serverUrl = './laravel/public';
 mainServices.factory('mainServices', function($http, $rootScope, $cookieStore) {
     return {
         tryLogin: function(credentials) {
-            return $http.post('./php/controllers/user.php?action=login',credentials,{headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}})
+            return $http.post(serverUrl+'/user/auth',credentials,{headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}})
                     .then(function(result){
                        return result.data;                       
                     });
         },
         updateUser: function(user){
-            return $http.post('./php/controllers/user.php?action=updateUser',user,{headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}})
+            return $http.post(serverUrl+'/user/update',user,{headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}})
                     .then(function(result){
                        return result.data;                       
                     });
         },
         getSkills: function() {
-            return $http.get('./php/controllers/skills.php?action=getSkills')
+            return $http.get(serverUrl+'/skill/all')
                 .then(function(result){
                     return result.data;
                 });
         },
         setSkillRelation: function(user_id,skill_id,skill_level){
             var data = { user_id:user_id, skill_id:skill_id, level:skill_level};
-            return $http.post('php/controllers/skills.php?action=addSkill',data,{headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}})
+            return $http.post(serverUrl+'/user/skill/add',data,{headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}})
                 .then(function(result){
                    return result;                       
                 });
         },
 
         getMySkills: function(userId) {
-        return $http.get('./php/controllers/skills.php?action=getUserSkills&user_id='+userId)
+        return $http.get(serverUrl+'/user/skills/'+userId)
             .then(function(result){
                 return result.data;
             });
@@ -57,7 +57,7 @@ mainServices.factory('mainServices', function($http, $rootScope, $cookieStore) {
             }
         },
         getUsers: function() {
-            return $http.get('./php/controllers/user.php?action=getAll')
+            return $http.get(serverUrl+'/user/all')
                 .then(function(result){
                     return result.data;
                 });
